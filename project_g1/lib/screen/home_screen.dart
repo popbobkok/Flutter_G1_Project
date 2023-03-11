@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:project_g1/providers/button_provider.dart';
 import 'package:project_g1/providers/location_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:project_g1/model/Location.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -19,23 +20,31 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text("HomePage"),
         ),
-        body: ListView.builder(
-            itemCount: 4,
-            itemBuilder: (context, int index) {
-              Text("Set_1");
-              return Card(
-                elevation: 3, // drop_shadow
-                margin: const EdgeInsets.all(5), //ห่างจากขอบ 4 ทิศทาง
-                child: ListTile(
-                  leading: CircleAvatar(
-                      child: FittedBox(
-                    child: Text("300"),
-                  )),
-                  title: Text("Menu"),
-                  subtitle: Text("11/03/2023"),
-                ),
-              );
-            }));
+        body: Consumer(builder: (context, LocationProvider provider, child) {
+          return ListView.builder(
+              itemCount: provider
+                  .location.length, //นับจำนวนข้อมูลใน location_provider.dart
+              itemBuilder: (context, int index) {
+                Location data = provider.location[
+                    index]; //ดึงข้อมูลทีละตัวจาก location_provider.dart
+                Text("Set_1");
+                return Card(
+                  elevation: 3, // drop_shadow
+                  margin: const EdgeInsets.all(5), //ห่างจากขอบ 4 ทิศทาง
+                  child: ListTile(
+                    leading: CircleAvatar(
+                        child: FittedBox(
+                      child: Text("300"),
+                    )),
+                    title: Text(data.locationname),
+                    subtitle: Text("LAT: " +
+                        data.lattitude.toString() +
+                        " // LONG: " +
+                        data.longtitude.toString()),
+                  ),
+                );
+              });
+        }));
   }
 }
 
