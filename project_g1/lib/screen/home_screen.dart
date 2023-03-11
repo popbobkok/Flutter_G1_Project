@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:project_g1/providers/button_provider.dart';
+import 'package:project_g1/providers/location_provider.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -11,6 +12,51 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("HomePage"),
+        ),
+        body: ListView.builder(
+            itemCount: 4,
+            itemBuilder: (context, int index) {
+              Text("Set_1");
+              return Card(
+                elevation: 3, // drop_shadow
+                margin: const EdgeInsets.all(5), //ห่างจากขอบ 4 ทิศทาง
+                child: ListTile(
+                  leading: CircleAvatar(
+                      child: FittedBox(
+                    child: Text("300"),
+                  )),
+                  title: Text("Menu"),
+                  subtitle: Text("11/03/2023"),
+                ),
+              );
+            }));
+  }
+}
+
+/*
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("HomePage"),
+        ),
+        body: Consumer(
+          builder: (context, LocationProvider provider, Widget child) {
+
+            return ListView.builder(itemBuilder: itemBuilder);
+          },
+        ));
+  }
+}
+*/
+/*
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController latitude = TextEditingController();
   TextEditingController longtitude = TextEditingController();
@@ -22,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     result.text = "No any Lat and Long input...";
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text("Button-4")),
         ]),
       )
-    ]);
+    ],
+    );
   }
 }
+*/
