@@ -30,8 +30,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text("Set_1");
                 return Card(
                   elevation: 3, // drop_shadow
+
                   margin: const EdgeInsets.all(5), //ห่างจากขอบ 4 ทิศทาง
                   child: ListTile(
+                    onLongPress: () {
+                      print(data.locationname);
+                      print(data.lattitude);
+                      print(data.longtitude);
+                    },
                     leading: CircleAvatar(
                         child: FittedBox(
                       child: Text("300"),
