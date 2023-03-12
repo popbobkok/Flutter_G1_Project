@@ -7,7 +7,7 @@ import 'package:project_g1/providers/button_provider.dart';
 import 'package:project_g1/providers/location_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
-
+import 'package:project_g1/model/Location_change.dart';
 import '../routes/routes.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -79,17 +79,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       _controller3.putIfAbsent(
                           data.longtitude, () => Text("failed"));
 
-                      child:
-                      TextField(
-                          //controller: _controller[data.locationname],
-                          //_controller2[data.lattitude],
-                          //_controller3[data.longtitude],
-                          );
-
                       print(_controller);
                       print(_controller2);
                       print(_controller3);
-
+                      context.read<Location_change>().locationName =
+                          _controller.toString();
+                      context.read<Location_change>().lattitude =
+                          _controller2.toString();
+                      context.read<Location_change>().longtitude =
+                          _controller3.toString();
                       Navigator.of(context).pushNamed(RouteManager.GpsPage);
                     },
                     leading: CircleAvatar(
