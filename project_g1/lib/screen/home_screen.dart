@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     leading: CircleAvatar(
                         child: FittedBox(
-                      child: Text("300"),
+                      child: Text("POINT"),
                     )),
                     title: Text(data.locationname),
                     subtitle: Text("LAT: " +

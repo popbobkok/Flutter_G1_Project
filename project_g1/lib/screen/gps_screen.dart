@@ -4,8 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 class GPS_Screen extends StatefulWidget {
   final String value_locate;
-  final String value_lat;
-  final String value_lon;
+  final double value_lat;
+  final double value_lon;
   const GPS_Screen(
       {super.key,
       required this.value_locate,
