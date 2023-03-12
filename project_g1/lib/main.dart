@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => MyHomePage(),
-          '/gpspage': (context) => GPSScreen(),
+          // '/gpspage': (context) => GPSScreen(),
         },
       ),
     );

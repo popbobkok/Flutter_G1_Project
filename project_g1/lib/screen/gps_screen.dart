@@ -1,72 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:project_g1/model/Location.dart';
-import 'package:project_g1/model/Location_change.dart';
-import 'package:project_g1/providers/location_provider.dart';
-import 'package:project_g1/routes/routes.dart';
-import 'package:provider/provider.dart';
-import 'home_screen.dart';
 
-class GPSScreen extends StatefulWidget {
-  const GPSScreen({super.key});
+class GPS_Screen extends StatefulWidget {
+  final String value_locate;
+  final String value_lat;
+  final String value_lon;
+  const GPS_Screen(
+      {super.key,
+      required this.value_locate,
+      required this.value_lat,
+      required this.value_lon});
 
   @override
-  State<GPSScreen> createState() => _GPSScreenState();
+  State<GPS_Screen> createState() => _GPS_Screen();
 }
 
-class _GPSScreenState extends State<GPSScreen> {
+class _GPS_Screen extends State<GPS_Screen> {
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      AppBar(title: Text("GPS_screen"), actions: [
-        IconButton(
-          onPressed: () {
-            //Navigator.of(context).pushNamed(RouteManager.HomePage);
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.exit_to_app),
-        )
-      ]),
-      Consumer(builder: (context, LocationProvider provider, child) {
-        return ListView.builder(
-            itemCount: provider
-                .location.length, //นับจำนวนข้อมูลใน location_provider.dart
-            itemBuilder: (context, int index) {
-              Location data = provider
-                  .location[index]; //ดึงข้อมูลทีละตัวจาก location_provider.dart
-
-              return Card(
-                elevation: 3, // drop_shadow
-                margin: const EdgeInsets.all(5), //ห่างจากขอบ 4 ทิศทาง
-                child: ListTile(
-                  leading: CircleAvatar(
-                      child: FittedBox(
-                    child: Text("300"),
-                  )),
-                  title: Text(data.locationname),
-                  subtitle: Text("LAT: " +
-                      data.lattitude.toString() +
-                      " // LONG: " +
-                      data.longtitude.toString()),
-                ),
-              );
-            });
-      })
-
-      /*Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            
-            Consumer<Location_change>(
-              builder: (context, value, child) {
-                return Text('Name: ${value.locationName}');
-              },
-            )
-          ],
-        ),
-      )*/
-    ]);
+    return new ListView(
+      children: [
+        AppBar(title: Text("GPS_screen"), actions: [
+          IconButton(
+            onPressed: () {
+              //Navigator.of(context).pushNamed(RouteManager.HomePage);
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.exit_to_app),
+          )
+        ]),
+        Text("NExtPage"),
+        Text("${widget.value_locate} ${widget.value_lat} ${widget.value_lon}")
+      ],
+    );
   }
 }

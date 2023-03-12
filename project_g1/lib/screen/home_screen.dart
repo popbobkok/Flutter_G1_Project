@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:project_g1/providers/button_provider.dart';
 import 'package:project_g1/providers/location_provider.dart';
+import 'package:project_g1/screen/gps_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
 import 'package:project_g1/model/Location_change.dart';
@@ -17,14 +18,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController nameController = TextEditingController(); //รับชื่อ
-  TextEditingController latController = TextEditingController(); //รับ lattitude
-  TextEditingController longController =
-      TextEditingController(); //รับ longtitude
-
-  Map<String, dynamic> _controller = new Map();
-  Map<String, dynamic> _controller2 = new Map();
-  Map<String, dynamic> _controller3 = new Map();
+  var nameController = TextEditingController(); //รับชื่อ
+  var latController = TextEditingController(); //รับ lattitude
+  var longController = TextEditingController(); //รับ longtitude
 
   @override
   void dispose() {
@@ -33,13 +29,6 @@ class _MyHomePageState extends State<MyHomePage> {
     longController.dispose();
 
     super.dispose();
-  }
-
-  @override
-  void clear() {
-    _controller.clear();
-    _controller2.clear();
-    _controller3.clear();
   }
 
   @override
@@ -66,29 +55,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       print(data.longtitude);
                     },*/
                     onLongPress: () {
-                      clear();
                       print(data.locationname);
                       print(data.lattitude);
                       print(data.longtitude);
+                      controller:
 
-                      _controller.putIfAbsent(
-                          data.locationname, () => Text("failed"));
-                      _controller2.putIfAbsent(
-                          data.lattitude, () => Text("failed"));
+                      //Navigator.of(context).pushNamed(RouteManager.GpsPage);
 
-                      _controller3.putIfAbsent(
-                          data.longtitude, () => Text("failed"));
-
-                      print(_controller);
-                      print(_controller2);
-                      print(_controller3);
-                      context.read<Location_change>().locationName =
-                          _controller.toString();
-                      context.read<Location_change>().lattitude =
-                          _controller2.toString();
-                      context.read<Location_change>().longtitude =
-                          _controller3.toString();
-                      Navigator.of(context).pushNamed(RouteManager.GpsPage);
+                      var route = new MaterialPageRoute(
+                          builder: (BuildContext context) => new GPS_Screen(
+                              value_locate: data.locationname,
+                              value_lat: data.lattitude,
+                              value_lon: data.longtitude));
+                      Navigator.of(context).push(route);
                     },
                     leading: CircleAvatar(
                         child: FittedBox(
@@ -105,3 +84,31 @@ class _MyHomePageState extends State<MyHomePage> {
         }));
   }
 }
+
+/*
+class NextPage extends StatefulWidget {
+  final String value_locate;
+  final String value_lat;
+  final String value_lon;
+  const NextPage(
+      {super.key,
+      required this.value_locate,
+      required this.value_lat,
+      required this.value_lon});
+
+  @override
+  State<NextPage> createState() => _NextPageState();
+}
+
+class _NextPageState extends State<NextPage> {
+  @override
+  Widget build(BuildContext context) {
+    return new ListView(
+      children: [
+        Text("NExtPage"),
+        Text("${widget.value_locate} ${widget.value_lat} ${widget.value_lon}")
+      ],
+    );
+  }
+}
+*/

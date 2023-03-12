@@ -14,11 +14,11 @@ class RouteManager {
           builder: (context) => MyHomePage(),
         );
 
-      case GpsPage:
+      /* case GpsPage:
         return MaterialPageRoute(
           builder: (context) => GPSScreen(),
         );
-
+*/
       default:
         throw FormatException("Routes not found!!");
     }
