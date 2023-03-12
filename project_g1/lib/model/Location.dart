@@ -1,7 +1,7 @@
 class Location {
   late String locationname;
-  late double lattitude;
-  late double longtitude;
+  late String lattitude;
+  late String longtitude;
 
   Location(
       {required this.locationname,
