@@ -25,14 +25,12 @@ class TrackingPage extends StatefulWidget {
   State<TrackingPage> createState() => _TrackingPageState();
 }
 
-class _TrackingPageState extends State<TrackingPage>
-    with TickerProviderStateMixin {
+class _TrackingPageState extends State<TrackingPage> {
   final Completer<GoogleMapController> _controller = Completer();
 
-  static const LatLng destination =
-      LatLng(18.801509396823917, 98.95057447934234); //CMU location
-  static const LatLng sourceLocation = LatLng(
-      18.825930324486652, 98.89361991113627); //selected location chk0 ก่อแป้น
+  static const LatLng destination = LatLng(18.8005, 98.9504); //CMU location
+  static const LatLng sourceLocation =
+      LatLng(18.8256, 98.8937); //selected location chk0 ก่อแป้น
   static const LatLng check1 =
       LatLng(18.82592027515902, 98.89343513105128); //chk1 สนสามใบ
   static const LatLng check2 =
@@ -60,6 +58,10 @@ class _TrackingPageState extends State<TrackingPage>
 
   LocationData? currentLocation;
 
+  BitmapDescriptor sourceIcon = BitmapDescriptor.defaultMarker;
+  BitmapDescriptor destiationIcon = BitmapDescriptor.defaultMarker;
+  BitmapDescriptor currentLocationIcon = BitmapDescriptor.defaultMarker;
+
   void getCurrentLocation() async {
     Location location = Location();
 
@@ -72,13 +74,14 @@ class _TrackingPageState extends State<TrackingPage>
 
     location.onLocationChanged.listen((newLoc) {
       currentLocation = newLoc;
-      googleMapController
-          .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-              zoom: 13.5,
-              target: LatLng(
-                newLoc.latitude!,
-                newLoc.longitude!,
-              ))));
+      googleMapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+            zoom: 13.5,
+            target: LatLng(
+              newLoc.latitude!,
+              newLoc.longitude!,
+            )),
+      ));
       setState(() {});
     });
   }
@@ -105,9 +108,28 @@ class _TrackingPageState extends State<TrackingPage>
     }
   }
 
+  void setCustomIcon() {
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/end-icon.png")
+        .then((icon) {
+      sourceIcon = icon;
+    });
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/start-icon.png")
+        .then((icon) {
+      destiationIcon = icon;
+    });
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/peko-icon.jpg")
+        .then((icon) {
+      currentLocationIcon = icon;
+    });
+  }
+
   @override
   void initState() {
     getPolyPoints();
+    setCustomIcon();
     getCurrentLocation();
     super.initState();
   }
@@ -125,22 +147,25 @@ class _TrackingPageState extends State<TrackingPage>
             ? const Center(child: Text("loading..."))
             : GoogleMap(
                 initialCameraPosition: CameraPosition(
-                  target:
-                      LatLng(destination!.latitude!, destination!.longitude!),
+                  target: LatLng(
+                      currentLocation!.latitude!, currentLocation!.longitude!),
                   zoom: 13.5,
                 ),
                 markers: {
                   Marker(
                     markerId: const MarkerId("currentLocation"),
-                    position:
-                        LatLng(destination!.latitude!, destination!.longitude!),
+                    icon: currentLocationIcon,
+                    position: LatLng(currentLocation!.latitude!,
+                        currentLocation!.longitude!),
                   ),
-                  const Marker(
+                  Marker(
                     markerId: MarkerId("source"),
+                    icon: sourceIcon,
                     position: sourceLocation,
                   ),
-                  const Marker(
+                  Marker(
                     markerId: MarkerId("destination"),
+                    icon: destiationIcon,
                     position: destination,
                   ),
                   const Marker(
@@ -195,10 +220,10 @@ class _TrackingPageState extends State<TrackingPage>
                     color: abitharder,
                     width: 6,
                   ),
-                }, /*
+                },
                 onMapCreated: (mapController) {
                   _controller.complete(mapController);
-                },*/
+                },
               ));
   }
 }
