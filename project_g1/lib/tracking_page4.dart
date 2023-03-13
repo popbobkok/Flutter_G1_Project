@@ -11,7 +11,7 @@ import 'package:project_g1/components/constants.dart';
 import 'screen/home_screen.dart';
 
 class TrackingPage4 extends StatefulWidget {
-  //ยอดดอยปุย
+  //น้ำตกห้วยแก้ว easy
   final String value_locate;
   final double value_lat;
   final double value_lon;
@@ -29,32 +29,31 @@ class _TrackingPage4State extends State<TrackingPage4> {
   final Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng sourceLocation =
-      LatLng(18.83190150489986, 98.88783444824068); //selected location
+      LatLng(18.81214373295127, 98.94159866850765); //selected location chk0 รัง
   static const LatLng destination =
       LatLng(18.801509396823917, 98.95057447934234); //CMU location
   static const LatLng check1 =
-      LatLng(18.825930324486652, 98.89361991113627); //chk1 ก่อแป้น
+      LatLng(18.812063265829224, 98.94159955501426); //chk1 ยอป่า
   static const LatLng check2 =
-      LatLng(18.82592027515902, 98.89343513105128); //chk2 สนสามใบ
+      LatLng(18.81199764296055, 98.9413173685077); //chk2 เสม็ด
   static const LatLng check3 =
-      LatLng(18.8263159716337, 98.89320944826582); //chk3 มะกอกห้ารู
+      LatLng(18.81181248724005, 98.9415155973432); //chk3 มะกอกป่า
   static const LatLng check4 =
-      LatLng(18.82636674590299, 98.8928022617592); //chk4 ก่อหัวหมูหลวง
+      LatLng(18.811653110209438, 98.94150486850766); //chk4 รัก
   static const LatLng check5 =
-      LatLng(18.826230816875437, 98.89271731758171); //chk5 นางพญาเสือโคร่ง
+      LatLng(18.81147811025182, 98.94172268200104); //chk5 มะกอกเกลื้อน
   static const LatLng check6 =
-      LatLng(18.82616050721207, 98.89257273292371); //chk6 ตองแตบ
+      LatLng(18.81147264299253, 98.94206835501417); //chk6 สะแล๋งหอมไก๋
   static const LatLng check7 =
-      LatLng(18.826180816940425, 98.8925834617592); //chk7 มะซัก
+      LatLng(18.811407798753248, 98.9421923685076); //chk7 คำมอกหลวง
   static const LatLng check8 =
-      LatLng(18.82683550641637, 98.89110215991067); //chk8 อบเชย
+      LatLng(18.811328110288162, 98.94243163967215); //chk8 เหี่ยง
   static const LatLng check9 =
-      LatLng(18.826805816128093, 98.89015580408825); //chk9 พี้พ่าย
+      LatLng(18.81108748724039, 98.9429629396721); //chk9 เหมือดโลด
   static const LatLng check10 =
-      LatLng(18.830355038399553, 98.88898877525277); //chk10 สารภีป่า
+      LatLng(18.811557798735176, 98.9440576261787); //chk10 กระทุ่ม
   static const LatLng check11 =
-      LatLng(18.82592027515902, 98.89343513105128); //chk11 มณฑาแดง
-
+      LatLng(18.81160702001123, 98.94478705501416); //chk11 กาสามปีก
   List<LatLng> polylineCoordinates = [];
 
   void getCurrentLocaiton() async {
@@ -94,7 +93,7 @@ class _TrackingPage4State extends State<TrackingPage4> {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Track Location_4",
+            "Location: น้ำตกห้วยแก้ว",
             style: TextStyle(color: Colors.black, fontSize: 16),
           ),
         ),
@@ -107,7 +106,7 @@ class _TrackingPage4State extends State<TrackingPage4> {
             Polyline(
               polylineId: PolylineId("route"),
               points: polylineCoordinates,
-              color: primaryColor,
+              color: easy,
               width: 6,
             ),
           },

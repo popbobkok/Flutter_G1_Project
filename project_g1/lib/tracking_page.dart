@@ -11,7 +11,7 @@ import 'package:project_g1/components/constants.dart';
 import 'screen/home_screen.dart';
 
 class TrackingPage extends StatefulWidget {
-  //ยอดดอยปุย
+  //ยอดดอยปุย a bit harder
   final String value_locate;
   final double value_lat;
   final double value_lon;
@@ -117,7 +117,7 @@ class _TrackingPageState extends State<TrackingPage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Track Location",
+            "Location: ยอดดอยปุย",
             style: TextStyle(color: Colors.black, fontSize: 16),
           ),
         ),
@@ -134,7 +134,7 @@ class _TrackingPageState extends State<TrackingPage> {
             Polyline(
               polylineId: PolylineId("route"),
               points: polylineCoordinates,
-              color: primaryColor,
+              color: abitharder,
               width: 6,
             ),
           },
