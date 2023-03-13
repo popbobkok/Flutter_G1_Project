@@ -28,12 +28,12 @@ class TrackingPage2 extends StatefulWidget {
 class _TrackingPage2State extends State<TrackingPage2> {
   final Completer<GoogleMapController> _controller = Completer();
 
-  static const LatLng sourceLocation = LatLng(
-      18.806589047742058, 98.91085752432996); //selected location chk0 ลำพูป่า
-  static const LatLng destination =
-      LatLng(18.801509396823917, 98.95057447934234); //CMU location
+  static const LatLng sourceLocation =
+      LatLng(18.8068, 98.9108); //selected location chk0 ลำพูป่า
+  static const LatLng destination = LatLng(18.8005, 98.9504); //CMU location
   static const LatLng check1 =
       LatLng(18.80656951591912, 98.91126658384961); //chk1 ไทรย้อยใบทู่
+  /*
   static const LatLng check2 =
       LatLng(18.806504672030258, 98.91144236850755); //chk2 ขี้หนอนคาย
   static const LatLng check3 =
@@ -54,7 +54,7 @@ class _TrackingPage2State extends State<TrackingPage2> {
       LatLng(18.805843735997847, 98.91234866850756); //chk10 เติม
   static const LatLng check11 =
       LatLng(18.805743736046104, 98.91242189734308); //chk11 จำปาป่า
-
+*/
   List<LatLng> polylineCoordinates = [];
 
   LocationData? currentLocation;
@@ -172,7 +172,7 @@ class _TrackingPage2State extends State<TrackingPage2> {
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check1,
-                  ),
+                  ), /*
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check2,
@@ -212,7 +212,7 @@ class _TrackingPage2State extends State<TrackingPage2> {
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check11,
-                  ),
+                  ),*/
                 },
                 polylines: {
                   Polyline(

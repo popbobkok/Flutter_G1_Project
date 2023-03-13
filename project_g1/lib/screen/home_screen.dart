@@ -49,28 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   margin: const EdgeInsets.all(5), //ห่างจากขอบ 4 ทิศทาง
                   child: ListTile(
-                    /*onTap: () {
-                      print(data.locationname);
-                      print(data.lattitude);
-                      print(data.longtitude);
-                    },*/
                     onLongPress: () {
                       print(data.locationname);
                       print(data.lattitude);
                       print(data.longtitude);
                       controller:
-
-                      //Navigator.of(context).pushNamed(RouteManager.GpsPage);
-
-/*
-                      var route = new MaterialPageRoute(
-                          builder: (BuildContext context) => new GPS_Screen(
-                              value_locate: data.locationname,
-                              value_lat: data.lattitude,
-                              value_lon: data.longtitude));
-                      //Navigator.of(context).push(route);
-*/
-
                       if (index == 0) {
                         var route = new MaterialPageRoute(
                             builder: (BuildContext context) => new TrackingPage(

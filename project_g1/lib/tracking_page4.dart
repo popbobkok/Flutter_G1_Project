@@ -29,11 +29,11 @@ class _TrackingPage4State extends State<TrackingPage4> {
   final Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng sourceLocation =
-      LatLng(18.81214373295127, 98.94159866850765); //selected location chk0 รัง
-  static const LatLng destination =
-      LatLng(18.801509396823917, 98.95057447934234); //CMU location
+      LatLng(18.8123, 98.9416); //selected location chk0 รัง
+  static const LatLng destination = LatLng(18.8005, 98.9504); //CMU location
   static const LatLng check1 =
       LatLng(18.812063265829224, 98.94159955501426); //chk1 ยอป่า
+  /*
   static const LatLng check2 =
       LatLng(18.81199764296055, 98.9413173685077); //chk2 เสม็ด
   static const LatLng check3 =
@@ -54,7 +54,7 @@ class _TrackingPage4State extends State<TrackingPage4> {
       LatLng(18.811557798735176, 98.9440576261787); //chk10 กระทุ่ม
   static const LatLng check11 =
       LatLng(18.81160702001123, 98.94478705501416); //chk11 กาสามปีก
-
+*/
   List<LatLng> polylineCoordinates = [];
 
   LocationData? currentLocation;
@@ -172,7 +172,7 @@ class _TrackingPage4State extends State<TrackingPage4> {
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check1,
-                  ),
+                  ), /*
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check2,
@@ -212,7 +212,7 @@ class _TrackingPage4State extends State<TrackingPage4> {
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check11,
-                  ),
+                  ),*/
                 },
                 polylines: {
                   Polyline(

@@ -33,6 +33,7 @@ class _TrackingPageState extends State<TrackingPage> {
       LatLng(18.8256, 98.8937); //selected location chk0 ก่อแป้น
   static const LatLng check1 =
       LatLng(18.82592027515902, 98.89343513105128); //chk1 สนสามใบ
+  /*
   static const LatLng check2 =
       LatLng(18.8263159716337, 98.89320944826582); //chk2 มะกอกห้ารู
   static const LatLng check3 =
@@ -53,7 +54,7 @@ class _TrackingPageState extends State<TrackingPage> {
       LatLng(18.82592027515902, 98.89343513105128); //chk10 มณฑาแดง
   static const LatLng check11 =
       LatLng(18.83190150489986, 98.88783444824068); //chk11 ทะโล้
-
+*/
   List<LatLng> polylineCoordinates = [];
 
   LocationData? currentLocation;
@@ -171,7 +172,7 @@ class _TrackingPageState extends State<TrackingPage> {
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check1,
-                  ),
+                  ), /*
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check2,
@@ -211,7 +212,7 @@ class _TrackingPageState extends State<TrackingPage> {
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check11,
-                  ),
+                  ),*/
                 },
                 polylines: {
                   Polyline(

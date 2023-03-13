@@ -3,6 +3,7 @@ import 'package:project_g1/providers/location_provider.dart';
 import 'package:project_g1/screen/home_screen.dart';
 import 'package:project_g1/tracking_page.dart';
 import 'package:provider/provider.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,6 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => MyHomePage(),
-          //'/': (context) => TrackingPage(),
           // '/gpspage': (context) => GPSScreen(),
         },
       ),
