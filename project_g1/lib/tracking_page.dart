@@ -57,21 +57,21 @@ class _TrackingPageState extends State<TrackingPage> {
 
   List<LatLng> polylineCoordinates = [];
 
-  LocationData? currentLocaiton;
+  LocationData? currentLocation;
 
-  void getCurrentLocaiton() async {
+  void getCurrentLocation() async {
     Location location = Location();
 
-    GoogleMapController googleMapController = await _controller.future;
+    //GoogleMapController googleMapController = await _controller.future;
 
     location.getLocation().then(
       (location) {
-        currentLocaiton = location;
+        currentLocation = location;
       },
     );
-
+    /*
     location.onLocationChanged.listen((newLoc) {
-      currentLocaiton = newLoc;
+      currentLocation = newLoc;
       googleMapController
           .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
               zoom: 13.5,
@@ -80,7 +80,7 @@ class _TrackingPageState extends State<TrackingPage> {
                 newLoc.longitude!,
               ))));
       setState(() {});
-    });
+    });*/
   }
 
   void getPolyPoints() async {
@@ -107,7 +107,7 @@ class _TrackingPageState extends State<TrackingPage> {
 
   @override
   void initState() {
-    getCurrentLocaiton();
+    getCurrentLocation();
     getPolyPoints();
     super.initState();
   }
@@ -121,12 +121,12 @@ class _TrackingPageState extends State<TrackingPage> {
             style: TextStyle(color: Colors.black, fontSize: 16),
           ),
         ),
-        body: currentLocaiton == null
+        body: currentLocation == null
             ? const Center(child: Text("loading..."))
             : GoogleMap(
                 initialCameraPosition: CameraPosition(
-                  target: LatLng(
-                      currentLocaiton!.latitude!, currentLocaiton!.longitude!),
+                  target:
+                      LatLng(destination!.latitude!, destination!.longitude!),
                   zoom: 13.5,
                 ),
                 polylines: {
@@ -140,8 +140,8 @@ class _TrackingPageState extends State<TrackingPage> {
                 markers: {
                   Marker(
                     markerId: const MarkerId("currentLocation"),
-                    position: LatLng(currentLocaiton!.latitude!,
-                        currentLocaiton!.longitude!),
+                    position:
+                        LatLng(destination!.latitude!, destination!.longitude!),
                   ),
                   const Marker(
                     markerId: MarkerId("source"),
@@ -149,56 +149,56 @@ class _TrackingPageState extends State<TrackingPage> {
                   ),
                   const Marker(
                     markerId: MarkerId("destination"),
+                    position: destination,
+                  ), /*
+                  const Marker(
+                    markerId: MarkerId("source"),
                     position: check1,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check2,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check3,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check4,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check5,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check6,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check7,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check8,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check9,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check10,
                   ),
                   const Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: MarkerId("source"),
                     position: check11,
-                  ),
-                  const Marker(
-                    markerId: MarkerId("destination"),
-                    position: destination,
-                  ),
-                },
+                  ),*/
+                }, /*
                 onMapCreated: (mapController) {
                   _controller.complete(mapController);
-                },
+                },*/
               ));
   }
 }
