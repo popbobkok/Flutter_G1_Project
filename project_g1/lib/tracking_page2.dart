@@ -54,9 +54,14 @@ class _TrackingPage2State extends State<TrackingPage2> {
       LatLng(18.805843735997847, 98.91234866850756); //chk10 เติม
   static const LatLng check11 =
       LatLng(18.805743736046104, 98.91242189734308); //chk11 จำปาป่า
+
   List<LatLng> polylineCoordinates = [];
 
   LocationData? currentLocation;
+
+  BitmapDescriptor sourceIcon = BitmapDescriptor.defaultMarker;
+  BitmapDescriptor destiationIcon = BitmapDescriptor.defaultMarker;
+  BitmapDescriptor currentLocationIcon = BitmapDescriptor.defaultMarker;
 
   void getCurrentLocation() async {
     Location location = Location();
@@ -70,13 +75,14 @@ class _TrackingPage2State extends State<TrackingPage2> {
 
     location.onLocationChanged.listen((newLoc) {
       currentLocation = newLoc;
-      googleMapController
-          .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-              zoom: 13.5,
-              target: LatLng(
-                newLoc.latitude!,
-                newLoc.longitude!,
-              ))));
+      googleMapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+            zoom: 13.5,
+            target: LatLng(
+              newLoc.latitude!,
+              newLoc.longitude!,
+            )),
+      ));
       setState(() {});
     });
   }
@@ -103,9 +109,28 @@ class _TrackingPage2State extends State<TrackingPage2> {
     }
   }
 
+  void setCustomIcon() {
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/end-icon.png")
+        .then((icon) {
+      sourceIcon = icon;
+    });
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/start-icon.png")
+        .then((icon) {
+      destiationIcon = icon;
+    });
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/peko-icon.jpg")
+        .then((icon) {
+      currentLocationIcon = icon;
+    });
+  }
+
   @override
   void initState() {
     getPolyPoints();
+    setCustomIcon();
     getCurrentLocation();
     super.initState();
   }
@@ -115,7 +140,7 @@ class _TrackingPage2State extends State<TrackingPage2> {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
-            "Location: ยอดดอยปุย",
+            "Location: ถ้ำฤาษี",
             style: TextStyle(color: Colors.black, fontSize: 16),
           ),
         ),
@@ -123,22 +148,25 @@ class _TrackingPage2State extends State<TrackingPage2> {
             ? const Center(child: Text("loading..."))
             : GoogleMap(
                 initialCameraPosition: CameraPosition(
-                  target:
-                      LatLng(destination!.latitude!, destination!.longitude!),
+                  target: LatLng(
+                      currentLocation!.latitude!, currentLocation!.longitude!),
                   zoom: 13.5,
                 ),
                 markers: {
                   Marker(
                     markerId: const MarkerId("currentLocation"),
-                    position:
-                        LatLng(destination!.latitude!, destination!.longitude!),
+                    icon: currentLocationIcon,
+                    position: LatLng(currentLocation!.latitude!,
+                        currentLocation!.longitude!),
                   ),
-                  const Marker(
+                  Marker(
                     markerId: MarkerId("source"),
+                    icon: sourceIcon,
                     position: sourceLocation,
                   ),
-                  const Marker(
+                  Marker(
                     markerId: MarkerId("destination"),
+                    icon: destiationIcon,
                     position: destination,
                   ),
                   const Marker(
@@ -193,10 +221,10 @@ class _TrackingPage2State extends State<TrackingPage2> {
                     color: suy,
                     width: 6,
                   ),
-                }, /*
+                },
                 onMapCreated: (mapController) {
                   _controller.complete(mapController);
-                },*/
+                },
               ));
   }
 }

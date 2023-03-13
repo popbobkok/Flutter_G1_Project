@@ -54,9 +54,14 @@ class _TrackingPage3State extends State<TrackingPage3> {
       LatLng(18.809988266456863, 98.91644236850765); //chk10 โมลี
   static const LatLng check11 =
       LatLng(18.809962487241133, 98.91609866850766); //chk11 มะดะหลวง
+
   List<LatLng> polylineCoordinates = [];
 
   LocationData? currentLocation;
+
+  BitmapDescriptor sourceIcon = BitmapDescriptor.defaultMarker;
+  BitmapDescriptor destiationIcon = BitmapDescriptor.defaultMarker;
+  BitmapDescriptor currentLocationIcon = BitmapDescriptor.defaultMarker;
 
   void getCurrentLocation() async {
     Location location = Location();
@@ -70,13 +75,14 @@ class _TrackingPage3State extends State<TrackingPage3> {
 
     location.onLocationChanged.listen((newLoc) {
       currentLocation = newLoc;
-      googleMapController
-          .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
-              zoom: 13.5,
-              target: LatLng(
-                newLoc.latitude!,
-                newLoc.longitude!,
-              ))));
+      googleMapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+            zoom: 13.5,
+            target: LatLng(
+              newLoc.latitude!,
+              newLoc.longitude!,
+            )),
+      ));
       setState(() {});
     });
   }
@@ -103,9 +109,28 @@ class _TrackingPage3State extends State<TrackingPage3> {
     }
   }
 
+  void setCustomIcon() {
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/end-icon.png")
+        .then((icon) {
+      sourceIcon = icon;
+    });
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/start-icon.png")
+        .then((icon) {
+      destiationIcon = icon;
+    });
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, "assets/icon/peko-icon.jpg")
+        .then((icon) {
+      currentLocationIcon = icon;
+    });
+  }
+
   @override
   void initState() {
     getPolyPoints();
+    setCustomIcon();
     getCurrentLocation();
     super.initState();
   }
@@ -123,22 +148,25 @@ class _TrackingPage3State extends State<TrackingPage3> {
             ? const Center(child: Text("loading..."))
             : GoogleMap(
                 initialCameraPosition: CameraPosition(
-                  target:
-                      LatLng(destination!.latitude!, destination!.longitude!),
+                  target: LatLng(
+                      currentLocation!.latitude!, currentLocation!.longitude!),
                   zoom: 13.5,
                 ),
                 markers: {
                   Marker(
                     markerId: const MarkerId("currentLocation"),
-                    position:
-                        LatLng(destination!.latitude!, destination!.longitude!),
+                    icon: currentLocationIcon,
+                    position: LatLng(currentLocation!.latitude!,
+                        currentLocation!.longitude!),
                   ),
-                  const Marker(
+                  Marker(
                     markerId: MarkerId("source"),
+                    icon: sourceIcon,
                     position: sourceLocation,
                   ),
-                  const Marker(
+                  Marker(
                     markerId: MarkerId("destination"),
+                    icon: destiationIcon,
                     position: destination,
                   ),
                   const Marker(
@@ -193,10 +221,10 @@ class _TrackingPage3State extends State<TrackingPage3> {
                     color: medium,
                     width: 6,
                   ),
-                }, /*
+                },
                 onMapCreated: (mapController) {
                   _controller.complete(mapController);
-                },*/
+                },
               ));
   }
 }
