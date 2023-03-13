@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:project_g1/providers/button_provider.dart';
 import 'package:project_g1/providers/location_provider.dart';
 import 'package:project_g1/screen/gps_screen.dart';
+import 'package:project_g1/tracking_page2.dart';
+import 'package:project_g1/tracking_page3.dart';
+import 'package:project_g1/tracking_page4.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
 import 'package:project_g1/model/Location_change.dart';
@@ -70,12 +73,39 @@ class _MyHomePageState extends State<MyHomePage> {
                               value_lon: data.longtitude));
                       //Navigator.of(context).push(route);
 */
-                      var route = new MaterialPageRoute(
-                          builder: (BuildContext context) => new TrackingPage(
-                              value_locate: data.locationname,
-                              value_lat: data.lattitude,
-                              value_lon: data.longtitude));
-                      Navigator.of(context).push(route);
+
+                      if (index == 0) {
+                        var route = new MaterialPageRoute(
+                            builder: (BuildContext context) => new TrackingPage(
+                                value_locate: data.locationname,
+                                value_lat: data.lattitude,
+                                value_lon: data.longtitude));
+                        Navigator.of(context).push(route);
+                      } else if (index == 1) {
+                        var route = new MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                new TrackingPage2(
+                                    value_locate: data.locationname,
+                                    value_lat: data.lattitude,
+                                    value_lon: data.longtitude));
+                        Navigator.of(context).push(route);
+                      } else if (index == 2) {
+                        var route = new MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                new TrackingPage3(
+                                    value_locate: data.locationname,
+                                    value_lat: data.lattitude,
+                                    value_lon: data.longtitude));
+                        Navigator.of(context).push(route);
+                      } else if (index == 3) {
+                        var route = new MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                new TrackingPage4(
+                                    value_locate: data.locationname,
+                                    value_lat: data.lattitude,
+                                    value_lon: data.longtitude));
+                        Navigator.of(context).push(route);
+                      }
                     },
                     leading: CircleAvatar(
                         child: FittedBox(
