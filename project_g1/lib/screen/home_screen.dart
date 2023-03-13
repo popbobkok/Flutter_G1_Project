@@ -9,6 +9,7 @@ import 'package:project_g1/model/Location.dart';
 import 'package:project_g1/model/Location_change.dart';
 import 'package:project_g1/screen/MapSample.dart';
 import '../routes/routes.dart';
+import '../tracking_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -61,19 +62,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
                       //Navigator.of(context).pushNamed(RouteManager.GpsPage);
 
+/*
                       var route = new MaterialPageRoute(
                           builder: (BuildContext context) => new GPS_Screen(
                               value_locate: data.locationname,
                               value_lat: data.lattitude,
                               value_lon: data.longtitude));
                       //Navigator.of(context).push(route);
-
-                      var route2 = new MaterialPageRoute(
-                          builder: (BuildContext context) => new MapSample(
+*/
+                      var route = new MaterialPageRoute(
+                          builder: (BuildContext context) => new TrackingPage(
                               value_locate: data.locationname,
                               value_lat: data.lattitude,
                               value_lon: data.longtitude));
-                      Navigator.of(context).push(route2);
+                      Navigator.of(context).push(route);
                     },
                     leading: CircleAvatar(
                         child: FittedBox(
