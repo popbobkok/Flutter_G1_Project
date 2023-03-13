@@ -28,32 +28,32 @@ class TrackingPage extends StatefulWidget {
 class _TrackingPageState extends State<TrackingPage> {
   final Completer<GoogleMapController> _controller = Completer();
 
-  static const LatLng sourceLocation =
-      LatLng(18.83190150489986, 98.88783444824068); //selected location
   static const LatLng destination =
       LatLng(18.801509396823917, 98.95057447934234); //CMU location
+  static const LatLng sourceLocation = LatLng(
+      18.825930324486652, 98.89361991113627); //selected location chk0 ก่อแป้น
   static const LatLng check1 =
-      LatLng(18.825930324486652, 98.89361991113627); //chk1 ก่อแป้น
+      LatLng(18.82592027515902, 98.89343513105128); //chk1 สนสามใบ
   static const LatLng check2 =
-      LatLng(18.82592027515902, 98.89343513105128); //chk2 สนสามใบ
+      LatLng(18.8263159716337, 98.89320944826582); //chk2 มะกอกห้ารู
   static const LatLng check3 =
-      LatLng(18.8263159716337, 98.89320944826582); //chk3 มะกอกห้ารู
+      LatLng(18.82636674590299, 98.8928022617592); //chk3 ก่อหัวหมูหลวง
   static const LatLng check4 =
-      LatLng(18.82636674590299, 98.8928022617592); //chk4 ก่อหัวหมูหลวง
+      LatLng(18.826230816875437, 98.89271731758171); //chk4 นางพญาเสือโคร่ง
   static const LatLng check5 =
-      LatLng(18.826230816875437, 98.89271731758171); //chk5 นางพญาเสือโคร่ง
+      LatLng(18.82616050721207, 98.89257273292371); //chk5 ตองแตบ
   static const LatLng check6 =
-      LatLng(18.82616050721207, 98.89257273292371); //chk6 ตองแตบ
+      LatLng(18.826180816940425, 98.8925834617592); //chk6 มะซัก
   static const LatLng check7 =
-      LatLng(18.826180816940425, 98.8925834617592); //chk7 มะซัก
+      LatLng(18.82683550641637, 98.89110215991067); //chk7 อบเชย
   static const LatLng check8 =
-      LatLng(18.82683550641637, 98.89110215991067); //chk8 อบเชย
+      LatLng(18.826805816128093, 98.89015580408825); //chk8 พี้พ่าย
   static const LatLng check9 =
-      LatLng(18.826805816128093, 98.89015580408825); //chk9 พี้พ่าย
+      LatLng(18.830355038399553, 98.88898877525277); //chk9 สารภีป่า
   static const LatLng check10 =
-      LatLng(18.830355038399553, 98.88898877525277); //chk10 สารภีป่า
+      LatLng(18.82592027515902, 98.89343513105128); //chk10 มณฑาแดง
   static const LatLng check11 =
-      LatLng(18.82592027515902, 98.89343513105128); //chk11 มณฑาแดง
+      LatLng(18.83190150489986, 98.88783444824068); //chk11 ทะโล้
 
   List<LatLng> polylineCoordinates = [];
 
