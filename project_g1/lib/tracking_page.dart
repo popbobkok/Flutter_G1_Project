@@ -62,14 +62,13 @@ class _TrackingPageState extends State<TrackingPage> {
   void getCurrentLocation() async {
     Location location = Location();
 
-    //GoogleMapController googleMapController = await _controller.future;
-
     location.getLocation().then(
       (location) {
         currentLocation = location;
       },
     );
-    /*
+    GoogleMapController googleMapController = await _controller.future;
+
     location.onLocationChanged.listen((newLoc) {
       currentLocation = newLoc;
       googleMapController
@@ -80,7 +79,7 @@ class _TrackingPageState extends State<TrackingPage> {
                 newLoc.longitude!,
               ))));
       setState(() {});
-    });*/
+    });
   }
 
   void getPolyPoints() async {
@@ -107,8 +106,8 @@ class _TrackingPageState extends State<TrackingPage> {
 
   @override
   void initState() {
-    getCurrentLocation();
     getPolyPoints();
+    getCurrentLocation();
     super.initState();
   }
 
@@ -129,14 +128,6 @@ class _TrackingPageState extends State<TrackingPage> {
                       LatLng(destination!.latitude!, destination!.longitude!),
                   zoom: 13.5,
                 ),
-                polylines: {
-                  Polyline(
-                    polylineId: PolylineId("route"),
-                    points: polylineCoordinates,
-                    color: abitharder,
-                    width: 6,
-                  ),
-                },
                 markers: {
                   Marker(
                     markerId: const MarkerId("currentLocation"),
@@ -150,7 +141,7 @@ class _TrackingPageState extends State<TrackingPage> {
                   const Marker(
                     markerId: MarkerId("destination"),
                     position: destination,
-                  ), /*
+                  ),
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check1,
@@ -194,7 +185,15 @@ class _TrackingPageState extends State<TrackingPage> {
                   const Marker(
                     markerId: MarkerId("source"),
                     position: check11,
-                  ),*/
+                  ),
+                },
+                polylines: {
+                  Polyline(
+                    polylineId: PolylineId("route"),
+                    points: polylineCoordinates,
+                    color: abitharder,
+                    width: 6,
+                  ),
                 }, /*
                 onMapCreated: (mapController) {
                   _controller.complete(mapController);
