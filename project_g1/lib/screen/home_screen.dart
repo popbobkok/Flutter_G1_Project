@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +7,7 @@ import 'package:project_g1/screen/gps_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
 import 'package:project_g1/model/Location_change.dart';
+import 'package:project_g1/screen/MapSample.dart';
 import '../routes/routes.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -67,7 +66,14 @@ class _MyHomePageState extends State<MyHomePage> {
                               value_locate: data.locationname,
                               value_lat: data.lattitude,
                               value_lon: data.longtitude));
-                      Navigator.of(context).push(route);
+                      //Navigator.of(context).push(route);
+
+                      var route2 = new MaterialPageRoute(
+                          builder: (BuildContext context) => new MapSample(
+                              value_locate: data.locationname,
+                              value_lat: data.lattitude,
+                              value_lon: data.longtitude));
+                      Navigator.of(context).push(route2);
                     },
                     leading: CircleAvatar(
                         child: FittedBox(

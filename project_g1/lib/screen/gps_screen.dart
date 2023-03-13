@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class GPS_Screen extends StatefulWidget {
   final String value_locate;
@@ -31,7 +32,7 @@ class _GPS_Screen extends State<GPS_Screen> {
           )
         ]),
         Text("NExtPage"),
-        Text("${widget.value_locate} ${widget.value_lat} ${widget.value_lon}")
+        Text("${widget.value_locate} ${widget.value_lat} ${widget.value_lon}"),
       ],
     );
   }
