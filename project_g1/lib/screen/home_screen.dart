@@ -1,16 +1,13 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
-import 'package:project_g1/providers/button_provider.dart';
 import 'package:project_g1/providers/location_provider.dart';
-import 'package:project_g1/screen/gps_screen.dart';
 import 'package:project_g1/tracking_page2.dart';
 import 'package:project_g1/tracking_page3.dart';
 import 'package:project_g1/tracking_page4.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
 import 'package:project_g1/model/Location_change.dart';
-import 'package:project_g1/screen/MapSample.dart';
 import '../routes/routes.dart';
 import '../tracking_page.dart';
 

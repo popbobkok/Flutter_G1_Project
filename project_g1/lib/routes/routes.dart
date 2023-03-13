@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_g1/screen/gps_screen.dart';
 import 'package:project_g1/screen/home_screen.dart';
 
 class RouteManager {
