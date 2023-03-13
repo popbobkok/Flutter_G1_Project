@@ -25,7 +25,8 @@ class TrackingPage extends StatefulWidget {
   State<TrackingPage> createState() => _TrackingPageState();
 }
 
-class _TrackingPageState extends State<TrackingPage> {
+class _TrackingPageState extends State<TrackingPage>
+    with TickerProviderStateMixin {
   final Completer<GoogleMapController> _controller = Completer();
 
   static const LatLng destination =
