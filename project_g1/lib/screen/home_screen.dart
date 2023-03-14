@@ -3,8 +3,6 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:project_g1/providers/location_provider.dart';
 import 'package:project_g1/tracking_page2.dart';
-import 'package:project_g1/tracking_page3.dart';
-import 'package:project_g1/tracking_page4.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
 import 'package:project_g1/model/Location_change.dart';
@@ -22,6 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
   var latController = TextEditingController(); //รับ lattitude
   var longController = TextEditingController(); //รับ longtitude
 
+/*
   @override
   void dispose() {
     nameController.dispose();
@@ -29,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
     longController.dispose();
 
     super.dispose();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -78,26 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                 value_lat: data.lattitude,
                                 value_lon: data.longtitude));
                         Navigator.of(context).push(route);
-                      } else if (index == 1) {
+                      }
+                      if (index == 1) {
                         var route = new MaterialPageRoute(
                             builder: (BuildContext context) =>
                                 new TrackingPage2(
-                                    value_locate: data.locationname,
-                                    value_lat: data.lattitude,
-                                    value_lon: data.longtitude));
-                        Navigator.of(context).push(route);
-                      } else if (index == 2) {
-                        var route = new MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                new TrackingPage3(
-                                    value_locate: data.locationname,
-                                    value_lat: data.lattitude,
-                                    value_lon: data.longtitude));
-                        Navigator.of(context).push(route);
-                      } else if (index == 3) {
-                        var route = new MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                new TrackingPage4(
                                     value_locate: data.locationname,
                                     value_lat: data.lattitude,
                                     value_lon: data.longtitude));

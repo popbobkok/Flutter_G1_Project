@@ -74,6 +74,7 @@ class _TrackingPageState extends State<TrackingPage> {
 
     location.onLocationChanged.listen((newLoc) {
       currentLocation = newLoc;
+
       googleMapController.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
             zoom: 13.5,
@@ -120,7 +121,7 @@ class _TrackingPageState extends State<TrackingPage> {
       destiationIcon = icon;
     });
     BitmapDescriptor.fromAssetImage(
-            ImageConfiguration.empty, "assets/icon/peko-icon.jpg")
+            ImageConfiguration.empty, "assets/icon/peko-icon.png")
         .then((icon) {
       currentLocationIcon = icon;
     });
@@ -128,9 +129,9 @@ class _TrackingPageState extends State<TrackingPage> {
 
   @override
   void initState() {
-    getPolyPoints();
-    setCustomIcon();
     getCurrentLocation();
+    setCustomIcon();
+    getPolyPoints();
     super.initState();
   }
 
@@ -159,12 +160,12 @@ class _TrackingPageState extends State<TrackingPage> {
                         currentLocation!.longitude!),
                   ),
                   Marker(
-                    markerId: MarkerId("source"),
+                    markerId: const MarkerId("source"),
                     icon: sourceIcon,
                     position: sourceLocation,
                   ),
                   Marker(
-                    markerId: MarkerId("destination"),
+                    markerId: const MarkerId("destination"),
                     icon: destiationIcon,
                     position: destination,
                   ),
