@@ -2,12 +2,12 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:project_g1/providers/location_provider.dart';
-import 'package:project_g1/tracking_page2.dart';
+import 'tracking_page2.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
 import 'package:project_g1/model/Location_change.dart';
 import '../routes/routes.dart';
-import '../tracking_page.dart';
+import 'tracking_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -20,7 +20,6 @@ class _MyHomePageState extends State<MyHomePage> {
   var latController = TextEditingController(); //รับ lattitude
   var longController = TextEditingController(); //รับ longtitude
 
-/*
   @override
   void dispose() {
     nameController.dispose();
@@ -28,7 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
     longController.dispose();
 
     super.dispose();
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,28 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   margin: const EdgeInsets.all(5), //ห่างจากขอบ 4 ทิศทาง
                   child: ListTile(
-                    /*onTap: () {
-                      print(data.locationname);
-                      print(data.lattitude);
-                      print(data.longtitude);
-                    },*/
                     onLongPress: () {
                       print(data.locationname);
                       print(data.lattitude);
                       print(data.longtitude);
                       controller:
-
-                      //Navigator.of(context).pushNamed(RouteManager.GpsPage);
-
-/*
-                      var route = new MaterialPageRoute(
-                          builder: (BuildContext context) => new GPS_Screen(
-                              value_locate: data.locationname,
-                              value_lat: data.lattitude,
-                              value_lon: data.longtitude));
-                      //Navigator.of(context).push(route);
-*/
-
                       if (index == 0) {
                         var route = new MaterialPageRoute(
                             builder: (BuildContext context) => new TrackingPage(
@@ -103,31 +85,3 @@ class _MyHomePageState extends State<MyHomePage> {
         }));
   }
 }
-
-/*
-class NextPage extends StatefulWidget {
-  final String value_locate;
-  final String value_lat;
-  final String value_lon;
-  const NextPage(
-      {super.key,
-      required this.value_locate,
-      required this.value_lat,
-      required this.value_lon});
-
-  @override
-  State<NextPage> createState() => _NextPageState();
-}
-
-class _NextPageState extends State<NextPage> {
-  @override
-  Widget build(BuildContext context) {
-    return new ListView(
-      children: [
-        Text("NExtPage"),
-        Text("${widget.value_locate} ${widget.value_lat} ${widget.value_lon}")
-      ],
-    );
-  }
-}
-*/

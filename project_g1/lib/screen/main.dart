@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_g1/providers/location_provider.dart';
 import 'package:project_g1/screen/home_screen.dart';
-import 'package:project_g1/tracking_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -24,8 +23,6 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => MyHomePage(),
-          //'/': (context) => TrackingPage(),
-          // '/gpspage': (context) => GPSScreen(),
         },
       ),
     );
