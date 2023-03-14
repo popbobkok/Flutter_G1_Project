@@ -8,7 +8,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 import 'package:project_g1/components/constants.dart';
 
-import 'home_screen.dart';
+import 'package:project_g1/screen/home_screen.dart';
 
 class TrackingPage extends StatefulWidget {
   //ยอดดอยปุย a bit harder

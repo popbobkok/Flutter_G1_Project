@@ -27,7 +27,7 @@ class LocationProvider with ChangeNotifier {
   }
 
   void addLocation(Location pinpoint) {
-    location.insert(0, pinpoint); //แทรกตัวล่าสุดไว้ที่ Array[0]
+    location.add(pinpoint); //แทรกตัวล่าสุดไว้ที่ Array[0]
     //notify to consumer
     notifyListeners();
   }

@@ -3,12 +3,11 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:project_g1/providers/location_provider.dart';
 import 'package:project_g1/screen/form_screen.dart';
-import 'tracking_page2.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
-import 'package:project_g1/model/Location_change.dart';
-import '../routes/routes.dart';
-import 'tracking_page.dart';
+import 'package:project_g1/routes/routes.dart';
+import 'package:project_g1/screen/tracking_page.dart';
+import 'package:project_g1/screen/tracking_page2.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
