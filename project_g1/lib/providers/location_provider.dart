@@ -11,11 +11,11 @@ class LocationProvider with ChangeNotifier {
         lattitude: 19.026317610016154,
         longtitude: 98.950193619518),
     Location(
-        locationname: "น้ำตกห้วยแก้ว",
+        locationname: "น้ำตกห้วยแก้ว [none-inside]",
         lattitude: 18.81208026885429,
         longtitude: 98.94461016989337),
     Location(
-        locationname: "มะดะหลวง(ต้นไทรใหญ่)",
+        locationname: "ต้นไทรใหญ่ [none-inside]",
         lattitude: 18.810206227300785,
         longtitude: 98.91615231268527),
     //Location(locationname: "CMU", lattitude: 18.801509396823917, longtitude: 98.95057447934234),
