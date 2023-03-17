@@ -2,6 +2,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:project_g1/providers/location_provider.dart';
+import 'package:project_g1/screen/from_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:project_g1/model/Location.dart';
 
@@ -18,6 +19,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("HomePage"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return FromScreen();
+                }));
+              },
+            )
+          ],
         ),
         body: Consumer(builder: (context, LocationProvider provider, child) {
           return ListView.builder(
