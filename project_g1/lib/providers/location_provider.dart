@@ -15,5 +15,7 @@ class LocationProvider with ChangeNotifier {
 
   void addLocation(Location pinpoint) {
     location.add(pinpoint);
+
+    notifyListeners();
   }
 }

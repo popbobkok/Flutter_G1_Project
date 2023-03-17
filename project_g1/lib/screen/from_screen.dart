@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:project_g1/model/Location.dart';
+import 'package:project_g1/providers/location_provider.dart';
+import 'package:provider/provider.dart';
 
 class FromScreen extends StatefulWidget {
   const FromScreen({super.key});
@@ -43,9 +45,20 @@ class _FromScreenState extends State<FromScreen> {
               ElevatedButton(
                 child: Text("submit"),
                 onPressed: () {
-                  var name = nameController;
-                  var lat = latController;
-                  var long = longController;
+                  var name = nameController.text;
+                  var lat = latController.text;
+                  var long = longController.text;
+
+                  Location locate = Location(
+                    locationname: name,
+                    lattitude: double.parse(lat),
+                    longtitude: double.parse(long),
+                  );
+
+                  var provider =
+                      Provider.of<LocationProvider>(context, listen: false);
+                  provider.addLocation(locate);
+                  Navigator.pop(context);
                 },
               )
             ],
